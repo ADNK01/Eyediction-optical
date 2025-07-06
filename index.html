@@ -39,36 +39,47 @@
             transform: translateY(0);
         }
         
-        /* Styles for the scrolling image gallery */
-        .gallery-slider {
-    animation: slide 15s infinite linear;
+/* Styles pour la galerie défilante */
+.gallery-slider {
+    animation: slideComplete 30s infinite linear;
+    width: calc(320px * 16); /* 16 images × 320px chacune */
 }
 
-@keyframes slide {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-25%); }
-    50% { transform: translateX(-50%); }
-    75% { transform: translateX(-75%); }
-    100% { transform: translateX(-100%); }
+@keyframes slideComplete {
+    0% { 
+        transform: translateX(0); 
+    }
+    100% { 
+        transform: translateX(calc(-320px * 8)); /* Défile exactement 8 images */
+    }
 }
 
 /* Version mobile */
 @media (max-width: 768px) {
-    @keyframes slide {
-        0% { transform: translateX(0); }
-        20% { transform: translateX(-40%); }
-        40% { transform: translateX(-80%); }
-        60% { transform: translateX(-120%); }
-        80% { transform: translateX(-160%); }
-        100% { transform: translateX(-200%); }
+    .gallery-slider {
+        animation: slideCompleteMobile 25s infinite linear;
+        width: calc(250px * 16); /* 16 images × 250px chacune sur mobile */
+    }
+    
+    .gallery-item {
+        width: 250px !important; /* Images plus petites sur mobile */
+    }
+    
+    @keyframes slideCompleteMobile {
+        0% { 
+            transform: translateX(0); 
+        }
+        100% { 
+            transform: translateX(calc(-250px * 8)); /* Défile 8 images sur mobile */
+        }
     }
 }
-        
-        /* Hover effect for gallery images */
-        .gallery-item:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
-        }
+
+/* Hover effect pour les images */
+.gallery-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
         
         /* Styles for service cards */
         .service-card {
